@@ -1,0 +1,8 @@
+<div class="app-header">
+  <h2 [routerLink]="['/']">Natural Cycles</h2>
+  <div class="app-links">
+    <button mat-button *ngIf="user" (click)="onAction.emit({ type: 'logout' })">
+      Log out
+    </button>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+
+.login {
+    height: 100%;
+    display: flex;
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 25px;
+    padding: 40px;
+  }
+}

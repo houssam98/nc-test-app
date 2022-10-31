@@ -1,0 +1,22 @@
+@import "src/styles/variables.scss";
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $primary;
+  border-bottom: 1px solid $border;
+  padding: 0 20px;
+  height: 70px;
+  z-index: 6;
+  transition: all 0.3s cubic-bezier(0.6, 0.4, 0, 1);
+
+  h2 {
+    color: #fff;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}

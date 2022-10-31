@@ -1,0 +1,21 @@
+.app-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .content-body {
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    flex: 1;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .router-container {
+      overflow: auto;
+      flex: 1;
+    }
+  }
+}

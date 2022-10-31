@@ -1,0 +1,34 @@
+<div class="login">
+  <div class="login-container">
+    <ng-container *ngIf="!windowRef?.confirmationResult; else verify">
+      <mat-form-field appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input matInput type="number" [formControl]="phoneNumber" required />
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-hint>Include area code</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        Login
+      </button>
+    </ng-container>
+
+    <ng-template #verify>
+      <mat-form-field appearance="fill">
+        <mat-label>Verification code</mat-label>
+        <input
+          matInput
+          type="number"
+          [formControl]="verificationCode"
+          required
+        />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="onVerify()">
+        Verify
+      </button>
+    </ng-template>
+  </div>
+</div>
+
+<div id="phone-sign-in-recaptcha" [hidden]="true"></div>
