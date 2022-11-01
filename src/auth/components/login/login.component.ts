@@ -51,7 +51,7 @@ export class LoginComponent implements AfterViewInit {
     this.windowRef.confirmationResult
       .confirm(this.verificationCode.value)
       .then((result: any) => {
-        console.log(result)
+        this.windowRef.confirmationResult = null
         this.router.navigate(['/profile'])
       })
       .catch((error: any) => {
