@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +8,5 @@ import { User } from 'firebase/auth';
 export class AppHeaderComponent {
   @Input() user!: any;
 
-  @Output() onAction = new EventEmitter();
+  @Output() onLogout = new EventEmitter();
 }

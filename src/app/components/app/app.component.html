@@ -1,5 +1,5 @@
 <div class="app-wrapper">
-    <app-header [user]="user$ | async"></app-header>
+    <app-header [user]="auth$ | async" (onLogout)="logout()"></app-header>
   
     <div class="content-body">
       <div class="router-container">

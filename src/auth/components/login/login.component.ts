@@ -1,21 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { WindowService } from 'src/window.service';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-
-export class PhoneNumber {
-  country!: string;
-  area!: string;
-  prefix!: string;
-  line!: string;
-
-  // format phone numbers as E.164
-  get e164() {
-    const num = this.country + this.area + this.prefix + this.line;
-    return `+${num}`;
-  }
-}
+import { AuthService } from 'src/auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -31,31 +18,20 @@ export class LoginComponent implements AfterViewInit {
 
   error!: any;
 
-  constructor(private win: WindowService) {}
+  constructor(private win: WindowService, private authService: AuthService, private router: Router) {}
 
   ngAfterViewInit() {
     this.windowRef = this.win.windowRef;
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      'phone-sign-in-recaptcha',
-      {
-        size: 'invisible',
-        callback: (response: any) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-          console.log(response);
-        },
-      }
-    );
+    this.windowRef.recaptchaVerifier = this.authService.getRecaptchaVerifier();
     this.windowRef.recaptchaVerifier.render();
   }
 
   async onSubmit() {
     const appVerifier = this.windowRef.recaptchaVerifier;
     if (this.phoneNumber.valid && this.phoneNumber.value) {
-      await firebase
-        .auth()
-        .signInWithPhoneNumber(`+${this.phoneNumber.value}`, appVerifier)
+      await this.authService
+        .login(`+${this.phoneNumber.value}`, appVerifier)
         .then((res) => {
-          console.log(res);
           this.windowRef.confirmationResult = res;
         })
         .catch((error) => {
@@ -69,9 +45,10 @@ export class LoginComponent implements AfterViewInit {
 
   onVerify() {
     this.windowRef.confirmationResult
-      .confirm(this.verificationCode)
+      .confirm(this.verificationCode.value)
       .then((result: any) => {
         console.log(result);
+        this.router.navigate(['/profile']);
       })
       .catch((error: any) => console.log(error, 'Incorrect code entered?'));
   }
