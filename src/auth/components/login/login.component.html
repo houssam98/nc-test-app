@@ -1,7 +1,8 @@
 <div class="login">
   <div class="login-container">
-
     <h2>LOGIN TO NC APP</h2>
+
+    <span *ngIf="error">{{ error }}</span>
 
     <ng-container *ngIf="!windowRef?.confirmationResult; else verify">
       <mat-form-field appearance="fill">

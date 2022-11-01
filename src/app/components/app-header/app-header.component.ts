@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 
 @Component({
   selector: 'app-header',
@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./app-header.component.scss'],
 })
 export class AppHeaderComponent {
-  @Input() user!: any;
+  @Input() user!: any
 
-  @Output() onLogout = new EventEmitter();
+  @Output() onLogout = new EventEmitter()
 }

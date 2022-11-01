@@ -1,5 +1,5 @@
-@import "src/styles/variables.scss";
-@import "~@angular/material/theming";
+@import 'src/styles/variables.scss';
+@import '~@angular/material/theming';
 @include mat-core();
 
 $my-primary: (
@@ -42,6 +42,6 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
 
 $custom-typography: mat-typography-config(
-  $font-family: "Montserrat",
+  $font-family: 'Montserrat',
 );
 @include angular-material-typography($custom-typography);

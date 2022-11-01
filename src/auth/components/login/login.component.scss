@@ -1,4 +1,4 @@
-@import "src/styles/variables.scss";
+@import 'src/styles/variables.scss';
 
 .login {
   height: 100%;
@@ -20,7 +20,7 @@
       margin: 0;
     }
 
-    input[type="number"] {
+    input[type='number'] {
       appearance: textfield;
       -moz-appearance: textfield;
     }
